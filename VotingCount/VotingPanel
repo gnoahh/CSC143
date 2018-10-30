@@ -1,0 +1,71 @@
+/********************
+ * Program: VotingPanel
+ * Description: This class will set up labels, buttons and count the times users click on the yes button. It will utilize 
+ * 				the anonymous class to listen for user's actions
+ * Group 6: Brian Nguyen, Henry Do, Thao Truong
+ * Author: Henry Do
+ * Date: 05/02/18
+ *********************/
+package anonymous;
+
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class VotingPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
+	private int yesVotes;
+	private int noVotes;
+	private JButton yesButton;
+	private JButton noButton;
+	private JLabel yesLabel;
+	private JLabel noLabel;
+	
+	//increments the count and update the text for yesLabel every time the user pushes
+	public VotingPanel() {
+		//Assign value
+		yesVotes = 0;
+		noVotes = 0;
+		
+		//Create Buttons
+		yesButton = new JButton("Yes");
+		noButton = new JButton("No");
+		
+		//Create Labels
+		yesLabel = new JLabel("Yes Votes: "+ yesVotes);
+		noLabel = new JLabel("No Votes: " + noVotes);
+		
+		//Collect interactions from user
+		yesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				yesVotes++;
+				yesLabel.setText("Yes Votes: " + yesVotes);
+			}
+		});
+		
+		noButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				noVotes++;
+				noLabel.setText("No Votes: " + noVotes);
+			}
+		});
+		
+		//set background
+		setBackground(Color.LIGHT_GRAY);
+		
+		//add buttons and Labels 
+		add(yesButton);
+		add(yesLabel);
+		add(noButton);
+		add(noLabel);
+		
+		
+		
+	}
+	
+}
